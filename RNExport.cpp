@@ -40,56 +40,6 @@ namespace winrt::livestocked::implementation
         }
     }
 
-    //IAsyncAction RNExport::ExportAsyncHelper(
-    //    RNExportOptions options,
-    //    ReactPromise<JSValue> promise) noexcept
-    //{
-    //    try {
-    //        auto capturedPromise = promise;
-    //        auto capturedOptions = options;
-
-    //        Pickers::FolderPicker folderPicker = Windows::Storage::Pickers::FolderPicker();
-    //        folderPicker.ViewMode(Pickers::PickerViewMode::Thumbnail);
-    //        folderPicker.SuggestedStartLocation(winrt::Windows::Storage::Pickers::PickerLocationId::Desktop);
-    //        folderPicker.FileTypeFilter().ReplaceAll({ winrt::to_hstring(L".csv") });
-    //        StorageFolder selectedFolder = co_await folderPicker.PickSingleFolderAsync();
-    //        if (selectedFolder != NULL) {
-
-    //            std::vector<BYTE> decodedData;
-    //            decodedData = base64_decode(*capturedOptions.Base64);
-    //            StorageFile tempFile = co_await selectedFolder.CreateFileAsync(winrt::to_hstring(*capturedOptions.FileName), CreationCollisionOption::ReplaceExisting);
-    //            co_await FileIO::WriteBytesAsync(tempFile, decodedData);
-    //            promise.Resolve(true);
-    //        }
-    //        else {
-    //            promise.Reject(L"No folder selected.");
-    //        }
-    //    }
-    //    catch (winrt::hresult_error const& ex) {
-    //        winrt::hresult hr = ex.code();
-    //        winrt::hstring message = ex.message(); // The system cannot find the file specified.
-    //        std::wstring widestr = std::wstring(message.begin(), message.end());
-    //        const wchar_t* widecstr = widestr.c_str();
-    //        promise.Reject(widecstr);
-    //    }
-    //}
-
-    //// Asynchronously exports text to file
-    //IAsyncAction RNExport::ExportAsyncHelper(
-    //    RNExportOptions options,
-    //    ReactPromise<JSValue> promise) noexcept
-    //{
-    //    auto capturedPromise = promise;
-    //    auto capturedOptions = options;
-
-    //    std::vector<BYTE> decodedData;
-    //    decodedData = base64_decode(*capturedOptions.Base64);
-    //    StorageFile tempFile = co_await Windows::Storage::DownloadsFolder::CreateFileAsync(winrt::to_hstring(*capturedOptions.FileName), CreationCollisionOption::FailIfExists);
-    //    co_await FileIO::WriteBytesAsync(tempFile, decodedData);
-    //    
-    //    promise.Resolve(true);
-    //}
-
     void RNExport::Export(JSValueObject&& options, ReactPromise<JSValue> promise) noexcept
     {
         RNExportOptions exportOptions;
